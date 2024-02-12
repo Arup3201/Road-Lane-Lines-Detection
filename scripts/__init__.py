@@ -1,1 +1,1 @@
-from img_road_lane_detection import detect_lanes
+from .img_road_lane_detection import detect_lanes

@@ -32,6 +32,7 @@ def detect_lanes(img):
             x1, y1, x2, y2 = line[0]
             cv2.line(line_img, (x1, y1), (x2, y2), (0, 255, 0), 5)
 
+        # Weighted addition by giving more weight to the line
         detection = cv2.addWeighted(img, 0.8, line_img, 1, 0)
 
     return detection
