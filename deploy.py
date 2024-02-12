@@ -1,8 +1,7 @@
 import streamlit as st
-import cv2 as cv
+import cv2
 from scripts.img_road_lane_detection import detect_lanes
 import moviepy.editor as moviepy
-from tempfile import NamedTemporaryFile
 import os
 
 
@@ -55,18 +54,18 @@ def main():
 
 def generate_detection_video(video_path, fsize=(640, 480)):
     # Access the video
-    cap =  cv.VideoCapture(video_path)
+    cap =  cv2.VideoCapture(video_path)
 
     if not cap.isOpened():
         return None
     
     # Frame per second
-    fps = cap.get(cv.CAP_PROP_FPS)
+    fps = cap.get(cv2.CAP_PROP_FPS)
 
     # fourcc parameter
-    fourcc = cv.VideoWriter_fourcc(*'mp4v')
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 
-    out = cv.VideoWriter("detection.mp4", fourcc, float(fps), fsize)
+    out = cv2.VideoWriter("detection.mp4", fourcc, float(fps), fsize)
 
     while True:
         ret, video_frame = cap.read()
@@ -76,8 +75,8 @@ def generate_detection_video(video_path, fsize=(640, 480)):
         
         detection = detect_lanes(video_frame)
 
-        detection = cv.cvtColor(detection, cv.COLOR_BGR2RGB)
-        detection = cv.resize(detection, fsize)
+        detection = cv2.cvtColor(detection, cv2.COLOR_BGR2RGB)
+        detection = cv2.resize(detection, fsize)
         # Save the frame in out
         out.write(detection)
         
