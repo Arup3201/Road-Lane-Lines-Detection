@@ -25,7 +25,7 @@ def main():
         # Read the video
         st_video = open(vid, 'rb')
         video_bytes = st_video.read()
-
+        
         # Show uploaded video
         st.write("Uploaded Video")
         st.video(video_bytes)
@@ -44,6 +44,7 @@ def main():
             clip.close()
 
             # Delete the videos
+            st_video.close()
             os.unlink(vid)
             os.unlink(detection_video)
             os.unlink(out_file)
