@@ -61,6 +61,7 @@ def detect_lanes_v2(img):
     '''
 
     detection = np.copy(img)
+    
     transformed = decrease_brightness(detection, DECREASE_BRIGHTNESS)
     transformed = increase_contrast(transformed, CLIPLIMIT)
     transformed = extract_white_yellow(transformed)
@@ -68,6 +69,7 @@ def detect_lanes_v2(img):
     transformed = cv2.GaussianBlur(transformed, (5, 5), 0)
     transformed = ROI_selection(transformed)
     transformed = cv2.Canny(transformed, LOW_CANNY, HIGH_CANNY)
+    
     lines = cv2.HoughLinesP(transformed, rho=RHO, theta=THETA, threshold=THRESHOLD, minLineLength=MINLINELENGTH, maxLineGap=MAXLINEGAP)
 
     if lines is not None:
