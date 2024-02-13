@@ -1,6 +1,6 @@
 import streamlit as st
 import cv2
-from scripts.road_lane_detection import detect_lanes
+from scripts.road_lane_detection import detect_lanes_v1, detect_lanes_v2
 import moviepy.editor as moviepy
 import os
 
@@ -73,7 +73,7 @@ def generate_detection_video(video_path, fsize=(640, 480)):
         if not ret:
             break
         
-        detection = detect_lanes(video_frame)
+        detection = detect_lanes_v2(video_frame)
 
         detection = cv2.cvtColor(detection, cv2.COLOR_BGR2RGB)
         detection = cv2.resize(detection, fsize)
