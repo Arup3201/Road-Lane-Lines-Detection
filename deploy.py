@@ -1,6 +1,6 @@
 import streamlit as st
 import cv2
-from scripts.img_road_lane_detection import detect_lanes
+from scripts.road_lane_detection import detect_lanes
 import moviepy.editor as moviepy
 import os
 
