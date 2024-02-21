@@ -45,7 +45,7 @@ def detect_lanes_v1(img):
             cv2.line(line_img, (x1, y1), (x2, y2), (0, 255, 0), 5)
 
         # Weighted addition by giving more weight to the line
-        detection = cv2.addWeighted(img, 0.8, line_img, 1, 0)
+        detection = cv2.addWeighted(img, 0.8, line_img, 1.0, 0.0)
 
     return detection
 
@@ -77,7 +77,7 @@ def detect_lanes_v2(img):
         for line in lines:
             x1, y1, x2, y2 = line[0]
             cv2.line(line_img, (x1, y1), (x2, y2), color=DETECTION_LINE_COLOR, thickness=DETECTION_LINE_THICKNESS)
-        detection = cv2.addWeighted(img, 0.8, line_img, 1, 0)
+        detection = cv2.addWeighted(img, 0.8, line_img, 1.0, 0.0)
 
     return detection
 
