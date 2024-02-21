@@ -73,7 +73,7 @@ def detect_lanes_v2(img):
     lines = cv2.HoughLinesP(transformed, rho=RHO, theta=THETA, threshold=THRESHOLD, minLineLength=MINLINELENGTH, maxLineGap=MAXLINEGAP)
 
     if lines is not None:
-        line_img = np.zeros_like(transformed)
+        line_img = np.zeros_like(img)
         for line in lines:
             x1, y1, x2, y2 = line[0]
             cv2.line(line_img, (x1, y1), (x2, y2), color=DETECTION_LINE_COLOR, thickness=DETECTION_LINE_THICKNESS)
